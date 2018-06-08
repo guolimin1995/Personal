@@ -40,14 +40,14 @@ def logins(request):
         if form.is_valid():
             password = request.POST['password']
             account = request.POST['user']
-            errors = {'user': []}
+            errors = {'user': [], 'password': []}
             if not UserInfo.objects.filter(account=account).exists():
                 errors_message = 'username not exists!'
                 errors['user'].append(errors_message)
                 return render(request, 'blog/login.html', {'error': errors})
             if UserInfo.objects.get(account=account).passwd != password:
                 errors_message = 'password error!'
-                errors['password'][0].append(errors_message)
+                errors['password'].append(errors_message)
                 return render(request, 'blog/login.html', {'error': errors})
             return HttpResponseRedirect('/blog/index/')
         else:
