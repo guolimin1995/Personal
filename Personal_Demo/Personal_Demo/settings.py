@@ -1,3 +1,4 @@
+# coding:utf-8
 # Django settings for Personal_Demo project.
 import os
 DEBUG = True
@@ -8,6 +9,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 DATABASES = {
     'default': {
@@ -15,7 +17,7 @@ DATABASES = {
         'NAME': 'blog_manager',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
-        'PASSWORD': '1995',
+        'PASSWORD': 'guolimin1995',
         'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
         'OPTIONS': {'charset': 'utf8mb4'}
@@ -117,6 +119,7 @@ ROOT_URLCONF = 'Personal_Demo.urls'
 WSGI_APPLICATION = 'Personal_Demo.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, "templates"),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -129,7 +132,12 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.admin',
     'Blog',
+    'xadmin',
+    'crispy_forms',
+    'captcha',
+    'comments'
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
@@ -164,3 +172,19 @@ LOGGING = {
         },
     }
 }
+
+# captcha settings
+CAPTCHA_OUTPUT_FORMAT = u'%(text_field)s %(hidden_field)s %(image)s'
+CAPTCHA_NOISE_FUNCTIONS = (
+    #'captcha.helpers.noise_null',
+    # 'captcha.helpers.noise_arcs', # 线
+    'captcha.helpers.noise_dots', # 点
+)
+# 图片大小
+CAPTCHA_IMAGE_SIZE = (100, 25)
+CAPTCHA_BACKGROUND_COLOR = '#ffffff'
+# CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.random_char_challenge'  # 图片中的文字为随机英文字母，如 mdsh
+CAPTCHA_CHALLENGE_FUNCT = 'captcha.helpers.math_challenge'    # 图片中的文字为数字表达式，如1+2=</span>
+
+CAPTCHA_LENGTH = 4  # 字符个数
+CAPTCHA_TIMEOUT = 1  # 超时(minutes)
