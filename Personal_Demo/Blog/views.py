@@ -329,4 +329,4 @@ def login(request):
         print request.POST.dict(), '-------ddd--------'
     # response = HttpResponse(ujson.dumps(ret))
     # response['Access-Control-Allow-Origin'] = '*'
-    return ujson.dumps(ret)
+    return HttpResponse(ujson.dumps(ret))

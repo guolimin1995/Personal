@@ -13,7 +13,7 @@
 </head>
 <style>
     body {
-        background-color: #D1EEEE;
+        background-color: #FFFFFF;
     }
     .animated.pulse {
         text-align:center;
@@ -51,6 +51,7 @@
 .hvr-grow:active {
     transform: scale(1.1);
 }
+
 </style>
 <body>
 <div class="animated pulse menuhome fadeInDown">
@@ -60,7 +61,215 @@
         <a href="" class="hvr-float-shadow">Test</a>
     </ul>
 </div>
+
+
+<div class="ui long modal">
+  <div class="header">Header</div>
+  <div class="content">
+    <p></p>
+  </div>
+  <div class="actions">
+    <div class="ui approve button">Approve</div>
+    <div class="ui button">Neutral</div>
+    <div class="ui cancel button">Cancel</div>
+  </div>
+</div>
+
+<div class="ui two modal">
+  <div class="header">Header</div>
+  <div class="content">
+    <p></p>
+  </div>
+  <div class="actions">
+    <div class="ui approve button">Approve</div>
+    <div class="ui button">Neutral</div>
+    <div class="ui cancel button">Cancel</div>
+  </div>
+</div>
+
+<button class="ui red basic button tests">One</button>
+
+<select class="ui dropdown test1">
+  <option value="">Gender</option>
+  <option value="fade up">Male</option>
+  <option value="fade">Female</option>
+</select>
+
+
+
+<div class="ui small circular rotate reveal image">
+  <img src="{% static 'blog/imges/test1.png' %}" class="visible content">
+  <img src="{% static 'blog/imges/test2.png' %}" class="hidden content">
+</div>
+
+<div class="ui special cards">
+  <div class="card">
+    <div class="blurring dimmable image">
+      <div class="ui dimmer">
+        <div class="content">
+          <div class="center">
+{#            <div class="ui inverted button">Add Friend</div>#}
+              <span>This is a test content! To show the car.</span>
+          </div>
+        </div>
+      </div>
+      <img src="{% static 'blog/imges/test1.png' %}">
+    </div>
+    <div class="content">
+      <a class="header">Team Fu</a>
+      <div class="meta">
+        <span class="date">Created in Sep 2014</span>
+      </div>
+    </div>
+    <div class="extra content">
+      <a><i class="users icon"></i> 2 Members </a>
+    </div>
+  </div>
+</div>
+
+<div class="ui shape">
+  <div class="sides">
+    <div class="active side">This side starts visible.</div>
+    <div class="side">This is yet another side</div>
+    <div class="side">This is the last side</div>
+  </div>
+</div>
+
+<button class="ui green basic button shops">One</button>
+
+<button class="ui green basic button sidess">two</button>
+
+<div class="ui top demo vertical  sidebar labeled icon menu">
+
+    <ul class="home ul">
+        <a href="" class="hvr-float-shadow"><i class="home icon"></i></a>
+        <a href="" class="hvr-float-shadow"><i class="block layout icon"></i></a>
+        <a href="" class="hvr-float-shadow"><i class="smile icon"></i></a>
+    </ul>
+</div>
+
+    <div class="ui pointing secondary menu">
+  <a class="item" data-tab="first">First</a>
+  <a class="item" data-tab="second">Second</a>
+  <a class="item active" data-tab="third">Third</a>
+</div>
+<div class="ui tab segment" data-tab="first">
+    this one html
+</div>
+<div class="ui tab segment" data-tab="second">
+  this  two html
+</div>
+<div class="ui tab segment active" data-tab="third">
+    this is three html
+</div>
+
+
+<div class="ui button">Activate Tab</div>
+<div class="ui tab" data-tab="tab-name">
+  asdasdasdas
+</div>
+
+<form class="ui form">
+  <div class="field">
+    <label>Empty</label>
+    <input name="empty" type="text">
+  </div>
+  <div class="field">
+    <label>下拉菜单</label>
+    <select class="ui dropdown" name="dropdown">
+      <option value="">Select</option>
+      <option value="male">Choice 1</option>
+      <option value="female">Choice 2</option>
+    </select>
+  </div>
+  <div class="inline field">
+    <div class="ui checkbox">
+      <input type="checkbox" name="checkbox">
+      <label>复选框</label>
+    </div>
+  </div>
+  <div class="ui submit button">Submit</div>
+  <div class="ui error message"></div>
+</form>
+
+
 <script>
+
+    $('.ui.button')
+  .on('click', function() {
+    // programmatically activating tab
+    $.tab('change tab', 'tab-name');
+  });
+
+    $('.secondary.menu .item').tab();
+
+
+    $('.coupled.modal')
+  .modal({
+    allowMultiple: false
+  })
+;
+    $('.long.modal').modal({blurring:true}).modal('attach events', '.tests', 'show')
+
+    $('.two.modal').modal('attach events', '.long.modal')
+
+    $('.dropdown.test1')
+  .dropdown({
+    onChange: function(value) {
+      $('.long.modal')
+        .modal('setting', 'transition', value)
+        .modal('show')
+      ;
+    }
+  });
+
+    $('.special.cards .image').dimmer({
+        on: 'hover'
+    });
+
+    $('.shops').on('click', function () {
+        $('.shape').shape('flip up');
+    })
+
+    $('.sidess').on('click', function () {
+        $('.ui.labeled.icon.sidebar')
+        .sidebar('setting', 'transition', 'scale down').sidebar('toggle');
+    })
+
+    $('.ui.form')
+  .form({
+    on: 'blur',
+    fields: {
+      empty: {
+        identifier  : 'empty',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter a value'
+          }
+        ]
+      },
+      dropdown: {
+        identifier  : 'dropdown',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a dropdown value'
+          }
+        ]
+      },
+      checkbox: {
+        identifier  : 'checkbox',
+        rules: [
+          {
+            type   : 'checked',
+            prompt : 'Please check the checkbox'
+          }
+        ]
+      }
+    }
+  })
+;
 
 </script>
 </body>
