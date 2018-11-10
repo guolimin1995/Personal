@@ -41,10 +41,10 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="首页">Home</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="博客">Blog</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="关于">About</a></li>
-                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="联系">Contact</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="Home">Home</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="Blog">Blog</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="About">About</a></li>
+                            <li class="cl-effect-11"><a href="{% url 'Blog:index' %}" data-hover="Contact">Contact</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </nav>
@@ -96,7 +96,7 @@
                         {% for date in date_list %}
                             <li>
                                 <a href="{% url 'Blog:archives' date.year date.month %}">{{ date.year }}
-                                    Year {{ date.month }} Month</a>
+                                    - {{ date.month }}</a>
                             </li>
                         {% empty %}
                             Empty Date！
@@ -110,46 +110,25 @@
                 {% for category in category_list %}
                     <li>
                       <a href="{% url 'Blog:category' category.pk %}">{{ category.name }}</a>
+                      <span class="post-count">({{ category.num_posts }})</span>
                     </li>
                     {% empty %}
                         Empty Classify
                     {% endfor %}
               </ul>
         </div>
-                <div class="widget widget-tag-cloud">
-                    <h3 class="widget-title">Label</h3>
-                    <ul>
-                        <li>
-                            <a href="#">Django</a>
-                        </li>
-                        <li>
-                            <a href="#">Python</a>
-                        </li>
-                        <li>
-                            <a href="#">Java</a>
-                        </li>
-                        <li>
-                            <a href="#">Notes</a>
-                        </li>
-                        <li>
-                            <a href="#">File</a>
-                        </li>
-                        <li>
-                            <a href="#">AngularJS</a>
-                        </li>
-                        <li>
-                            <a href="#">CSS</a>
-                        </li>
-                        <li>
-                            <a href="#">JavaScript</a>
-                        </li>
-                        <li>
-                            <a href="#">Snippet</a>
-                        </li>
-                        <li>
-                            <a href="#">jQuery</a>
-                        </li>
-                    </ul>
+                 <div class="widget widget-tag-cloud">
+                  <h3 class="widget-title">标签云</h3>
+                  {% get_tags as tag_list %}
+                  <ul>
+                    {% for tag in tag_list %}
+                    <li>
+                      <a href="{% url 'Blog:tag' tag.pk %}">{{ tag.name }}</a>
+                    </li>
+                    {% empty %}
+                    暂无标签！
+                    {% endfor %}
+                  </ul>
                 </div>
                 <div class="rss">
                     <a href=""><span class="ion-social-rss-outline"></span> RSS </a>

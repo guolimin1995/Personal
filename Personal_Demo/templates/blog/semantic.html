@@ -1,0 +1,67 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ content.title }}</title>
+    <link rel="stylesheet" href="{% static 'Semantic/semantic.min.css' %}">
+    <link href="{% static 'blog/css/animate.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'blog/css/hover.css' %}" rel="stylesheet" type="text/css">
+    <script src="{% static 'Semantic/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'Semantic/semantic.min.js' %}"></script>
+    <script src="{% static 'blog/js/vue.js' %}"></script>
+</head>
+<style>
+    body {
+        background-color: #D1EEEE;
+    }
+    .animated.pulse {
+        text-align:center;
+        position: relative;
+        font: 25px;
+    }
+    #menuhome {
+        animation-duration: 2s;
+        animation-delay: 2s;
+    }
+    .home.ul {
+        padding: 15px;
+    }
+    .home.ul a {
+        font-size: 35px;
+        margin-left: 2%;
+    }
+    .home.ul a:hover {
+            color: #1aa62a;
+            text-decoration: none
+    }
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    backface-visibility: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.hvr-grow:hover,
+.hvr-grow:focus,
+.hvr-grow:active {
+    transform: scale(1.1);
+}
+</style>
+<body>
+<div class="animated pulse menuhome fadeInDown">
+    <ul class="home ul">
+        <a href="" class="hvr-float-shadow">Home</a>
+        <a href="" class="hvr-float-shadow">Reviews</a>
+        <a href="" class="hvr-float-shadow">Test</a>
+    </ul>
+</div>
+<script>
+
+</script>
+</body>
+</html>

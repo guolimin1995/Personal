@@ -17,7 +17,7 @@ DATABASES = {
         'NAME': 'blog_manager',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': 'root',
-        'PASSWORD': 'guolimin1995',
+        'PASSWORD': '1995',
         'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '3306',                      # Set to empty string for default.
         'OPTIONS': {'charset': 'utf8mb4'}
@@ -137,7 +137,7 @@ INSTALLED_APPS = (
     'xadmin',
     'crispy_forms',
     'captcha',
-    'comments'
+    'comments',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

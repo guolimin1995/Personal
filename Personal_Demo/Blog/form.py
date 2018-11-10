@@ -37,4 +37,3 @@ class UserFrom(ModelForm):
         fields = ['account', 'passwd']
 
 w = UserWidget()
-print(w.media)
