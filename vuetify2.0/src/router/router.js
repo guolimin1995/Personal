@@ -11,7 +11,15 @@ export default new Router({
         {
             path: '/',
             name: 'index',
-            component: Index
+            component: Index,
+            children: [
+
+            ]
+        },
+        {
+            path: '/article',
+            name: 'article',
+            component: () => import('@/views/Article/Article'),
         }
     ]
 })

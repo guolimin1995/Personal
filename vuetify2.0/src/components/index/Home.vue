@@ -1,245 +1,128 @@
 <template>
   <v-container>
     <v-layout wrap>
-      <v-content>
-        <section class="animated bounceIn">
-          <v-parallax src="../../imgs/back2_2.png" width="100%" height="600">
-            <v-container>
-              <v-layout justify-center>
-                <v-flex xs12 md12 lg12 text-xs-center>
-                  <!-- <div class="text-xs-center animated bounceInDown">
-                <v-btn class="my-4 title hvr-grow-shadow" text color="white">HOME</v-btn>
-                <v-btn class="my-4 title hvr-grow-shadow" text color="white">DATEFILE</v-btn>
-                <v-btn class="my-4 title hvr-grow-shadow" text color="white">ABOUT</v-btn>
-                  </div>-->
-                  <v-avatar size="150" class="my-5 animated jackInTheBox hvr-icon-pulse">
-                    <img src="../../imgs/back.jpeg" class="hvr-icon" alt="avatar" />
-                  </v-avatar>
+      <section class="animated zoomIn">
+        <v-layout column wrap class="my-3" align-center>
+          <v-flex xs12 sm4 class="my-3">
+            <div class="text-xs-center">
+              <h2 class="headline">The best way to start developing</h2>
+              <span class="subheading">Cras facilisis mi vitae nunc</span>
+            </div>
+          </v-flex>
+          <v-flex xs12>
+            <v-container grid-list-xl>
+              <v-layout row wrap align-center>
+                <v-flex xs12 md4 v-for="(item, i) in carInfo" :key="i">
+                  <v-hover>
+                    <template v-slot:default="{ hover }">
+                      <v-card
+                        :elevation="hover ? 0 : 8"
+                        class="mx-auto transparent animated rotateIn"
+                        max-width="325"
+                      >
+                        <v-img
+                          class="white--text imgBground"
+                          height="150px"
+                          src="https://picsum.photos/1920/1080?random"
+                        ></v-img>
+                        <v-card-title class="card-title">{{ item.title }}</v-card-title>
 
-                  <h1 class="white--text mb-2 display-1 text-xs-center">Personal Blog</h1>
-                  <div class="subheading mb-3 text-xs-center">Powered by Zerone</div>
+                        <v-card-text>
+                          <span class="text--primary">
+                            <span>{{item.content}}</span>
+                          </span>
+                        </v-card-text>
+
+                        <v-card-actions>
+                          <v-list-item class="grow">
+                            <v-icon class="mr-1">mdi-account-edit</v-icon>
+                            <v-list-item-content>
+                              <v-list-item-title>{{item.create_user}}</v-list-item-title>
+                            </v-list-item-content>
+                            <v-spacer></v-spacer>
+
+                            <v-icon class="mr-1">mdi-heart</v-icon>
+                            <span class="subheading mr-2">{{item.likes}}</span>
+                            <span class="mr-1">·</span>
+                            <v-icon class="mr-1">mdi-eye</v-icon>
+                            <span class="subheading">({{item.eye_view}})</span>
+                          </v-list-item>
+                        </v-card-actions>
+                        <v-fade-transition>
+                          <v-overlay v-if="hover" absolute color="grey darken-3">
+                            <v-btn depressed color="grey darken-1">see info</v-btn>
+                          </v-overlay>
+                        </v-fade-transition>
+                      </v-card>
+                    </template>
+                  </v-hover>
                 </v-flex>
               </v-layout>
             </v-container>
-          </v-parallax>
-        </section>
-        <section class="animated zoomIn">
-          <v-layout column wrap class="my-5" align-center>
-            <v-flex xs12 sm4 class="my-3">
-              <div class="text-xs-center">
-                <h2 class="headline">The best way to start developing</h2>
-                <span class="subheading">Cras facilisis mi vitae nunc</span>
-              </div>
-            </v-flex>
-            <v-flex xs12>
-              <v-container grid-list-xl>
-                <v-layout row wrap align-center>
-                  <v-flex xs12 md4>
-                    <v-hover v-slot:default="{ hover }">
-                      <v-card
-                        class="mx-auto transparent animated rotateIn"
-                        :elevation="hover ? 0 : 10"
-                      >
-                        <v-card-text class="text-xs-center">
-                          <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
-                        </v-card-text>
-                        <v-card-title primary-title class="layout justify-center">
-                          <div class="headline text-xs-center">Material Design</div>
-                        </v-card-title>
-                        <v-card-text>
-                          Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                          Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                        </v-card-text>
-                      </v-card>
-                    </v-hover>
-                  </v-flex>
-                  <v-flex xs12 md4>
-                    <v-card class="elevation-0 transparent animated rotateIn">
-                      <v-card-text class="text-xs-center">
-                        <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
-                      </v-card-text>
-                      <v-card-title primary-title class="layout justify-center">
-                        <div class="headline">Fast development</div>
-                      </v-card-title>
-                      <v-card-text>
-                        Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                  <v-flex xs12 md4>
-                    <v-card class="elevation-0 transparent animated rotateIn">
-                      <v-card-text class="text-xs-center">
-                        <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
-                      </v-card-text>
-                      <v-card-title primary-title class="layout justify-center">
-                        <div class="headline text-xs-center">Completely Open Sourced</div>
-                      </v-card-title>
-                      <v-card-text>
-                        Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-flex>
-          </v-layout>
-        </section>
-        <section class="animated zoomIn">
-          <v-layout column wrap class="my-5" align-center>
-            <v-flex xs12 sm4 class="my-3">
-              <div class="text-xs-center">
-                <h2 class="headline">The best way to start developing</h2>
-                <span class="subheading">Cras facilisis mi vitae nunc</span>
-              </div>
-            </v-flex>
-            <v-flex xs12>
-              <v-container grid-list-xl>
-                <v-layout row wrap align-center>
-                  <v-flex xs12 md4>
-                    <v-hover v-slot:default="{ hover }">
-                      <v-card
-                        class="mx-auto transparent animated rotateIn"
-                        :elevation="hover ? 0 : 10"
-                      >
-                        <v-card-text class="text-xs-center">
-                          <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
-                        </v-card-text>
-                        <v-card-title primary-title class="layout justify-center">
-                          <div class="headline text-xs-center">Material Design</div>
-                        </v-card-title>
-                        <v-card-text>
-                          Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                          Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                        </v-card-text>
-                      </v-card>
-                    </v-hover>
-                  </v-flex>
-                  <v-flex xs12 md4>
-                    <v-card class="elevation-0 transparent animated rotateIn">
-                      <v-card-text class="text-xs-center">
-                        <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
-                      </v-card-text>
-                      <v-card-title primary-title class="layout justify-center">
-                        <div class="headline">Fast development</div>
-                      </v-card-title>
-                      <v-card-text>
-                        Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                  <v-flex xs12 md4>
-                    <v-card class="elevation-0 transparent animated rotateIn">
-                      <v-card-text class="text-xs-center">
-                        <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
-                      </v-card-text>
-                      <v-card-title primary-title class="layout justify-center">
-                        <div class="headline text-xs-center">Completely Open Sourced</div>
-                      </v-card-title>
-                      <v-card-text>
-                        Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-flex>
-          </v-layout>
-        </section>
-        <section class="animated zoomIn">
-          <v-layout column wrap class="my-5" align-center>
-            <v-flex xs12 sm4 class="my-3">
-              <div class="text-xs-center">
-                <h2 class="headline">The best way to start developing</h2>
-                <span class="subheading">Cras facilisis mi vitae nunc</span>
-              </div>
-            </v-flex>
-            <v-flex xs12>
-              <v-container grid-list-xl>
-                <v-layout row wrap align-center>
-                  <v-flex xs12 md4>
-                    <v-hover v-slot:default="{ hover }">
-                      <v-card
-                        class="mx-auto transparent animated rotateIn"
-                        :elevation="hover ? 0 : 10"
-                      >
-                        <v-card-text class="text-xs-center">
-                          <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
-                        </v-card-text>
-                        <v-card-title primary-title class="layout justify-center">
-                          <div class="headline text-xs-center">Material Design</div>
-                        </v-card-title>
-                        <v-card-text>
-                          Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                          Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                          Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                        </v-card-text>
-                      </v-card>
-                    </v-hover>
-                  </v-flex>
-                  <v-flex xs12 md4>
-                    <v-card class="elevation-0 transparent animated rotateIn">
-                      <v-card-text class="text-xs-center">
-                        <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
-                      </v-card-text>
-                      <v-card-title primary-title class="layout justify-center">
-                        <div class="headline">Fast development</div>
-                      </v-card-title>
-                      <v-card-text>
-                        Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                  <v-flex xs12 md4>
-                    <v-card class="elevation-0 transparent animated rotateIn">
-                      <v-card-text class="text-xs-center">
-                        <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
-                      </v-card-text>
-                      <v-card-title primary-title class="layout justify-center">
-                        <div class="headline text-xs-center">Completely Open Sourced</div>
-                      </v-card-title>
-                      <v-card-text>
-                        Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
-                        Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-                        Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.
-                      </v-card-text>
-                    </v-card>
-                  </v-flex>
-                </v-layout>
-              </v-container>
-            </v-flex>
-          </v-layout>
-        </section>
-      </v-content>
+          </v-flex>
+        </v-layout>
+      </section>
     </v-layout>
   </v-container>
 </template>
 
 <script>
 export default {
-  data: () => ({})
+  data: () => ({
+    carInfo: [
+      {
+        title: "Top 10 Australian beaches",
+        content:
+          "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+        create_user: "zerone",
+        eye_view: 4850,
+        likes: 500
+      },
+      {
+        title: "Top 10 Australian beaches",
+        content:
+          "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+        create_user: "zerone",
+        eye_view: 4850,
+        likes: 500
+      },
+      {
+        title: "Top 10 Australian beaches",
+        content:
+          "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+        create_user: "zerone",
+        eye_view: 4850,
+        likes: 500
+      },
+      {
+        title: "Top 10 Australian beaches",
+        content:
+          "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+        create_user: "zerone",
+        eye_view: 4850,
+        likes: 500
+      },
+      {
+        title: "Top 10 Australian beaches",
+        content:
+          "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+        create_user: "zerone",
+        eye_view: 4850,
+        likes: 500
+      },
+      {
+        title: "Top 10 Australian beaches",
+        content:
+          "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+        create_user: "zerone",
+        eye_view: 4850,
+        likes: 500
+      }
+    ]
+  })
 };
 </script>
 <style>
-.parallaxs {
-  background-attachment: fixed;
-  -webkit-filter: blur(20px);
-  -moz-filter: blur(20px);
-  -ms-filter: blur(20px);
-  -o-filter: blur(20px);
-  filter: blur(10px);
-}
 /* Icon Pulse */
 @-webkit-keyframes hvr-icon-pulse {
   25% {
@@ -285,6 +168,19 @@ export default {
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
+}
+.imgBground {
+  background-attachment: fixed;
+  -webkit-filter: blur(1.5px);
+  -moz-filter: blur(1.5px);
+  -ms-filter: blur(1.5px);
+  -o-filter: blur(1.5px);
+  filter: blur(1.5px);
+}
+.card-title {
+  position: absolute;
+  top: 15%;
+  left: 10%;
 }
 </style>
 
