@@ -19,15 +19,16 @@
                         :elevation="hover ? 0 : 8"
                         class="mx-auto transparent animated rotateIn"
                         max-width="325"
+                        :loading="card_loading"
                       >
                         <v-img
                           class="white--text imgBground"
                           height="150px"
                           src="https://picsum.photos/1920/1080?random"
                         ></v-img>
-                        <v-card-title class="card-title">{{ item.title }}</v-card-title>
+                        <v-card-title class="white--text card-title">{{ item.title }}</v-card-title>
 
-                        <v-card-text>
+                        <v-card-text class="my-4">
                           <span class="text--primary">
                             <span>{{item.content}}</span>
                           </span>
@@ -61,6 +62,13 @@
             </v-container>
           </v-flex>
         </v-layout>
+        <v-layout justify-center>
+          <v-flex xs4 md2 lg1 sm2 class="my-4">
+            <v-hover v-slot:default="{ hover }">
+              <v-btn x-large :elevation="hover ? 0 : 8" outlined color="green">SEE MORE</v-btn>
+            </v-hover>
+          </v-flex>
+        </v-layout>
       </section>
     </v-layout>
   </v-container>
@@ -69,11 +77,12 @@
 <script>
 export default {
   data: () => ({
+    card_loading: "green",
     carInfo: [
       {
-        title: "Top 10 Australian beaches",
+        title: "技术如何炼成，我们来一起看看",
         content:
-          "Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+          "技术如何炼成 Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
         create_user: "zerone",
         eye_view: 4850,
         likes: 500
@@ -119,7 +128,12 @@ export default {
         likes: 500
       }
     ]
-  })
+  }),
+  created() {
+    setTimeout(() => {
+      this.card_loading = false;
+    }, 2000);
+  }
 };
 </script>
 <style>
@@ -179,8 +193,8 @@ export default {
 }
 .card-title {
   position: absolute;
-  top: 15%;
-  left: 10%;
+  top: 30px;
+  left: 10px;
 }
 </style>
 

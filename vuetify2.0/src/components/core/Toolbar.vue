@@ -1,4 +1,5 @@
 <template>
+  <!-- <v-img src="../../imgs/back3_1.png" class="first"> -->
   <div class="first">
     <v-app-bar
       fixed
@@ -37,6 +38,7 @@
       </v-layout>
     </v-container>
   </div>
+  <!-- </v-img> -->
 </template>
 <script>
 export default {
@@ -79,9 +81,10 @@ export default {
   transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
 .first {
-  background-image: url("../../imgs/back2_2.png");
+  background-image: url("../../imgs/back3_1.png");
   height: 250px;
   width: 100%;
+  background-size: cover;
 }
 </style>
 
