@@ -30,28 +30,28 @@
 
                         <v-card-text class="my-4">
                           <span class="text--primary">
-                            <span>{{item.content}}</span>
+                            <span>{{item.content.slice(0,150) + '. . . .'}}</span>
                           </span>
                         </v-card-text>
 
                         <v-card-actions>
                           <v-list-item class="grow">
-                            <v-icon class="mr-1">mdi-account-edit</v-icon>
+                            <v-icon class="mr-1" color="teal darken-2">mdi-account-edit</v-icon>
                             <v-list-item-content>
                               <v-list-item-title>{{item.create_user}}</v-list-item-title>
                             </v-list-item-content>
                             <v-spacer></v-spacer>
 
-                            <v-icon class="mr-1">mdi-heart</v-icon>
+                            <v-icon class="mr-1" color="red">mdi-heart</v-icon>
                             <span class="subheading mr-2">{{item.likes}}</span>
                             <span class="mr-1">·</span>
-                            <v-icon class="mr-1">mdi-eye</v-icon>
+                            <v-icon class="mr-1" color="blue darken-2">mdi-eye</v-icon>
                             <span class="subheading">({{item.eye_view}})</span>
                           </v-list-item>
                         </v-card-actions>
                         <v-fade-transition>
                           <v-overlay v-if="hover" absolute color="grey darken-3">
-                            <v-btn depressed color="grey darken-1">see info</v-btn>
+                            <v-btn depressed color="grey darken-1" @click="cardMoreInfo(i)">see info</v-btn>
                           </v-overlay>
                         </v-fade-transition>
                       </v-card>
@@ -69,20 +69,53 @@
             </v-hover>
           </v-flex>
         </v-layout>
+        <v-layout row justify-center>
+          <v-dialog v-model="card_dialog" width="800px">
+            <v-card>
+              <v-card-title>
+                <span class="headline">{{ this.card_each_title }}</span>
+              </v-card-title>
+              <v-divider></v-divider>
+              <v-card-text>{{ this.card_each_content }}</v-card-text>
+              <v-card-actions>
+                <v-list-item class="grow">
+                  <v-icon class="mr-1" color="teal darken-2">mdi-account-edit</v-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>{{this.card_each_create_user}}</v-list-item-title>
+                  </v-list-item-content>
+                  <v-spacer></v-spacer>
+
+                  <v-icon class="mr-1" color="red">mdi-heart</v-icon>
+                  <span class="subheading mr-2">{{this.card_each_likes}}</span>
+                  <span class="mr-1">·</span>
+                  <v-icon class="mr-1" color="blue darken-2">mdi-eye</v-icon>
+                  <span class="subheading">({{this.card_each_eye_view}})</span>
+                </v-list-item>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
+        </v-layout>
       </section>
     </v-layout>
   </v-container>
 </template>
 
 <script>
+import { truncate } from "fs";
 export default {
   data: () => ({
     card_loading: "green",
+    card_dialog: false,
+    card_each_title: "",
+    card_each_content: "",
+    card_each_create_user: "",
+    card_each_likes: "",
+    card_each_eye_view: "",
     carInfo: [
       {
         title: "技术如何炼成，我们来一起看看",
         content:
-          "技术如何炼成 Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
+          "技术如何炼成 Cras facilisis mi vitae nunc lobortis pharetra. </br> Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
         create_user: "zerone",
         eye_view: 4850,
         likes: 500
@@ -133,6 +166,17 @@ export default {
     setTimeout(() => {
       this.card_loading = false;
     }, 2000);
+  },
+  methods: {
+    cardMoreInfo(index) {
+      console.log(index);
+      this.card_each_title = this.carInfo[index].title;
+      this.card_each_content = this.carInfo[index].content;
+      this.card_each_create_user = this.carInfo[index].create_user;
+      this.card_each_likes = this.carInfo[index].likes;
+      this.card_each_eye_view = this.carInfo[index].eye_view;
+      this.card_dialog = true;
+    }
   }
 };
 </script>
