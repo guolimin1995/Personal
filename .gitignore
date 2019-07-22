@@ -1,3 +1,4 @@
 *.pyc
 /.idea
 zerone-blog/node_modules
+zerone-blog/src/.DS_Store

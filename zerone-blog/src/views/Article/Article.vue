@@ -140,7 +140,10 @@
 <script>
 export default {
   name: "Article",
-  data: () => ({})
+  data: () => ({}),
+  created() {
+    this.$vuetify.goTo(0);
+  }
 };
 </script>
 <style>

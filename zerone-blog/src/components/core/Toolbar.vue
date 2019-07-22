@@ -22,7 +22,9 @@
 
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn class="hvr-bounce-in" text dark to="/article">DATEFILE</v-btn>
-        <v-btn class="hvr-bounce-in" text dark>ABOUT</v-btn>
+
+        <v-btn class="hvr-bounce-in" text dark to="/about">ABOUT</v-btn>
+
         <v-btn class="hvr-bounce-in" text dark>CONTECTS</v-btn>
       </v-toolbar-items>
     </v-app-bar>
@@ -30,7 +32,7 @@
       <v-layout justify-center>
         <v-flex xs12 md12 lg12 text-xs-center>
           <v-avatar size="90" class="my-0 animated jackInTheBox hvr-icon-pulse">
-            <img src="../../imgs/back.jpeg" class="hvr-icon" alt="avatar" />
+            <img src="../../imgs/avatar.jpeg" class="hvr-icon" alt="avatar" />
           </v-avatar>
           <h2 class="white--text mb-2 display-0 text-xs-center">Personal Blog</h2>
           <div class="subheading mb-2 text-xs-center">Powered by Zerone</div>
@@ -81,7 +83,7 @@ export default {
   transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
 }
 .first {
-  background-image: url("../../imgs/back3_1.png");
+  background-image: url("../../imgs/toolbar.png");
   height: 250px;
   width: 100%;
   background-size: cover;

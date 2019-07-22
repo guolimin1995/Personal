@@ -24,7 +24,8 @@
                         <v-img
                           class="white--text imgBground"
                           height="150px"
-                          src="https://picsum.photos/1920/1080?random"
+                          aspect-ratio="1"
+                          :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`"
                         ></v-img>
                         <v-card-title class="white--text card-title">{{ item.title }}</v-card-title>
 
@@ -101,7 +102,6 @@
 </template>
 
 <script>
-import { truncate } from "fs";
 export default {
   data: () => ({
     card_loading: "green",
@@ -118,7 +118,8 @@ export default {
           "技术如何炼成 Cras facilisis mi vitae nunc lobortis pharetra. </br> Nulla volutpat tincidunt ornare.Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Nullam in aliquet odio. Aliquam eu est vitae tellus bibendum tincidunt. Suspendisse potenti.",
         create_user: "zerone",
         eye_view: 4850,
-        likes: 500
+        likes: 500,
+        img: "../../imgs/card_img0.jpg"
       },
       {
         title: "Top 10 Australian beaches",
@@ -166,6 +167,7 @@ export default {
     setTimeout(() => {
       this.card_loading = false;
     }, 2000);
+    this.$vuetify.goTo(0);
   },
   methods: {
     cardMoreInfo(index) {
