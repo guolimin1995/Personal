@@ -18,7 +18,7 @@
                       class="mx-auto transparent animated rotateIn"
                       :elevation="hover ? 0 : 10"
                     >
-                      <v-card-text class="text-xs-center">
+                      <v-card-text class="text-center">
                         <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
                       </v-card-text>
                       <v-card-title primary-title class="layout justify-center">
@@ -34,7 +34,7 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-card class="elevation-0 transparent animated rotateIn">
-                    <v-card-text class="text-xs-center">
+                    <v-card-text class="text-center">
                       <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
@@ -49,7 +49,7 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-card class="elevation-0 transparent animated rotateIn">
-                    <v-card-text class="text-xs-center">
+                    <v-card-text class="text-center">
                       <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
@@ -84,7 +84,7 @@
                       class="mx-auto transparent animated rotateIn"
                       :elevation="hover ? 0 : 10"
                     >
-                      <v-card-text class="text-xs-center">
+                      <v-card-text class="text-center">
                         <v-icon x-large class="blue--text text--lighten-2">color_lens</v-icon>
                       </v-card-text>
                       <v-card-title primary-title class="layout justify-center">
@@ -100,7 +100,7 @@
                 </v-flex>
                 <v-flex xs12 md4>
                   <v-card class="elevation-0 transparent animated rotateIn">
-                    <v-card-text class="text-xs-center">
+                    <v-card-text class="text-center">
                       <v-icon x-large class="blue--text text--lighten-2">flash_on</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
@@ -119,7 +119,7 @@
                       <v-icon x-large class="blue--text text--lighten-2">build</v-icon>
                     </v-card-text>
                     <v-card-title primary-title class="layout justify-center">
-                      <div class="headline text-xs-center">Completely Open Sourced</div>
+                      <div class="headline text-center">Completely Open Sourced</div>
                     </v-card-title>
                     <v-card-text>
                       Cras facilisis mi vitae nunc lobortis pharetra. Nulla volutpat tincidunt ornare.
@@ -142,6 +142,7 @@ export default {
   name: "Article",
   data: () => ({}),
   created() {
+    console.log(document.documentElement.scrollTop);
     this.$vuetify.goTo(0);
   }
 };

@@ -8,7 +8,7 @@
       height="80"
       class="animated slideInDown"
     >
-      <v-app-bar-nav-icon class="hidden-md-and-up"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon class="hidden-md-and-up" @click="toggleDrawer"></v-app-bar-nav-icon>
 
       <v-btn class="hvr-bounce-in" text color="white" to="/">
         <v-icon>mdi-home</v-icon>
@@ -28,9 +28,10 @@
         <v-btn class="hvr-bounce-in" text dark>CONTECTS</v-btn>
       </v-toolbar-items>
     </v-app-bar>
-    <v-container class="my-5">
-      <v-layout justify-center>
-        <v-flex xs12 md12 lg12 text-xs-center>
+
+    <v-container class="my-9" justify-center>
+      <v-layout>
+        <v-flex xs12 md12 lg12 class="text-center my-9">
           <v-avatar size="90" class="my-0 animated jackInTheBox hvr-icon-pulse">
             <img src="../../imgs/avatar.jpeg" class="hvr-icon" alt="avatar" />
           </v-avatar>
@@ -43,11 +44,14 @@
   <!-- </v-img> -->
 </template>
 <script>
+import { mapMutations } from "vuex";
+
 export default {
   data: () => ({
     appbarColor: "transparent"
   }),
   methods: {
+    ...mapMutations(["toggleDrawer"]),
     changeAppBarColor() {
       if (
         !!document.documentElement.scrollTop &&
@@ -84,7 +88,7 @@ export default {
 }
 .first {
   background-image: url("../../imgs/toolbar.png");
-  height: 250px;
+  height: 270px;
   width: 100%;
   background-size: cover;
 }

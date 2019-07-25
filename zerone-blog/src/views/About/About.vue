@@ -4,7 +4,7 @@
       <v-flex xs12 md10 lg8 class="my-4">
         <v-hover>
           <template v-slot:default="{ hover }">
-            <v-card :elevation="hover ? 0 : 8" class="transparent animated rotateIn">
+            <v-card :elevation="hover ? 0 : 8" flat class="transparent animated rotateIn">
               <v-img
                 class="white--text"
                 height="300px"
@@ -13,14 +13,14 @@
                 <v-card-title class="align-end fill-height">MY INFO</v-card-title>
               </v-img>
               <v-card-title>
-                <span class="title font-weight-light">WORK INFO</span>
+                <span class="title font-weight-bold">WORK INFO</span>
               </v-card-title>
               <v-divider></v-divider>
               <v-card-text
                 class="headline"
               >Turns out semicolon-less style is easier and safer in TS because most gotcha edge cases are type invalid as well</v-card-text>
               <v-card-title>
-                <span class="title font-weight-light">Skills and Expertize</span>
+                <span class="title font-weight-bold">Skills and Expertize</span>
               </v-card-title>
               <v-divider></v-divider>
               <v-layout wrap class="my-3">
@@ -44,7 +44,7 @@
                 </template>
               </v-layout>
               <v-card-title>
-                <span class="title font-weight-light">CONTENCTS ME</span>
+                <span class="title font-weight-bold">CONTENCTS ME</span>
               </v-card-title>
               <v-divider></v-divider>
               <v-layout class="my-3">

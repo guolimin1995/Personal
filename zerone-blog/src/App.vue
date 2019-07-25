@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <core-toolbar />
+    <core-drawer />
     <core-view />
     <core-floatBtn />
     <core-footer />
@@ -14,7 +15,8 @@ export default {
     CoreToolbar: () => import("@/components/core/Toolbar"),
     CoreView: () => import("@/components/core/View"),
     CoreFloatBtn: () => import("@/components/core/FloatBtn"),
-    CoreFooter: () => import("@/components/core/Footer")
+    CoreFooter: () => import("@/components/core/Footer"),
+    CoreDrawer: () => import("@/components/core/Drawer")
   },
   data: () => ({}),
   created() {}
