@@ -101,7 +101,7 @@ export default {
       {
         title: "Go",
         icon: "mdi-language-go",
-        value: 65
+        value: 50
       },
       {
         title: "PHP",
@@ -153,7 +153,7 @@ export default {
       {
         title: "Go Framework (Beego Iris)",
         icon: "mdi-language-go",
-        value: 60
+        value: 50
       }
     ]
   }),
