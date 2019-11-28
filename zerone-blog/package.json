@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "animate.css": "^3.7.2",
-    "npm": "^6.10.1",
+    "npm": "^6.13.1",
     "vue": "^2.6.10",
     "vue-router": "^3.0.7",
-    "vuetify": "^2.0.15",
+    "vuetify": "^2.1.12",
     "vuex": "^3.1.1"
   },
   "devDependencies": {
@@ -29,7 +29,7 @@
     "sass-loader": "^7.1.0",
     "vue-cli-plugin-vuetify": "git+https://github.com/vuetifyjs/vue-cli-plugin-vuetify.git#dev",
     "vue-template-compiler": "^2.6.10",
-    "vuetify-loader": "^1.2.2"
+    "vuetify-loader": "^1.4.2"
   },
   "eslintConfig": {
     "root": true,

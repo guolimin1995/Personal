@@ -159,6 +159,8 @@ export default {
   }),
   created() {
     this.$vuetify.goTo(0);
+    // this.$router.push({ path: "/about", query: { title: 1 } });
+    // console.log(this.$route.query.title);
   }
 };
 </script>

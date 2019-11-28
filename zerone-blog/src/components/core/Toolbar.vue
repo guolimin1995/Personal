@@ -1,6 +1,6 @@
 <template>
-  <!-- <v-img src="../../imgs/back3_1.png" class="first"> -->
-  <div class="first">
+  <!-- <v-img src="../../imgs/back3_1.png" class="first">  class="first" -->
+  <div :style="toolbar_style">
     <v-app-bar
       fixed
       elevate-on-scroll
@@ -48,7 +48,14 @@ import { mapMutations } from "vuex";
 
 export default {
   data: () => ({
-    appbarColor: "transparent"
+    appbarColor: "transparent",
+    toolbar_style: {
+      backgroundImage: "url(" + require("../../imgs/toolbar.png") + ")",
+      height: "300px",
+      width: "100%",
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat"
+    }
   }),
   methods: {
     ...mapMutations(["toggleDrawer"]),
@@ -65,7 +72,8 @@ export default {
   },
   mounted() {
     window.addEventListener("scroll", this.changeAppBarColor);
-  }
+  },
+  created() {}
 };
 </script>
 
@@ -91,6 +99,7 @@ export default {
   height: 270px;
   width: 100%;
   background-size: cover;
+  position: fixed;
 }
 </style>
 

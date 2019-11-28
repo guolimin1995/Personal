@@ -24,7 +24,7 @@
                       >
                         <v-img
                           class="white--text imgBground"
-                          height="150px"
+                          height="150"
                           aspect-ratio="1"
                           :src="`https://picsum.photos/500/300?image=${i * 5 + 10}`"
                         ></v-img>
@@ -67,7 +67,11 @@
         <v-layout justify-center>
           <v-flex xs4 md2 lg1 sm2 class="my-4 text-center">
             <v-hover v-slot:default="{ hover }">
-              <v-btn x-large :elevation="hover ? 0 : 8" outlined color="green">SEE MORE</v-btn>
+              <v-btn
+                x-large
+                :elevation="hover ? 0 : 8"
+                style="background-image:linear-gradient(#388E3C, #81C784);color:white;border-color:#2E7D32;box-shadow: 0.10rem 0.20rem 0.55rem #81C784;"
+              >SEE MORE</v-btn>
             </v-hover>
           </v-flex>
         </v-layout>
@@ -80,7 +84,7 @@
               <v-divider></v-divider>
 
               <v-card-text>
-                <div v-html="html"></div>
+                <div>{{ this.card_each_content }}</div>
               </v-card-text>
               <v-card-actions>
                 <v-list-item class="grow">
